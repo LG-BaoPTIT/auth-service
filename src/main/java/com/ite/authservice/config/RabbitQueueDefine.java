@@ -20,23 +20,13 @@ public class RabbitQueueDefine {
         return new Queue(JobQueue.LOCK_ACCOUNT_NOTICE_QUEUE,true);
     }
     @Bean
-    public Queue createAdminAccountQueue(){ return new Queue(JobQueue.CREATE_ADMIN_ACCOUNT_QUEUE,false);}
-    @Bean
     public DirectExchange emailExchange(){
         return new DirectExchange("email-exchange");
     }
-    @Bean
-    public DirectExchange adminAccountExchange(){ return  new DirectExchange("adminAccount-exchange");}
 
     @Bean
     public Binding bindingLockAccountNoticeQueueToEmailExchange(Queue lockAccountNoticeQueue, DirectExchange emailExchange){
         return BindingBuilder.bind(lockAccountNoticeQueue).to(emailExchange).with("lockAccountNotice.routing.key");
     }
-    @Bean
-    public Binding bindingCreateAdminAccountQueueToAdminAccountExchange(Queue createAdminAccountQueue, DirectExchange adminAccountExchange){
-        return BindingBuilder.bind(createAdminAccountQueue).to(adminAccountExchange).with("createAdminAccount.routing.key");
-    }
-
-
 
 }
