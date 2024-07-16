@@ -39,8 +39,6 @@ public class RabbitMQConfig {
 
     @Value("${spring.rabbitmq.virtual-host}")
     private String rabbitVirtualHost;
-
-
 //    @Value("${spring.rabbitmq.virtual-host-job}")
 //    private String rabbitVirtualHostJob;
 
@@ -80,6 +78,4 @@ public class RabbitMQConfig {
         factory.setDefaultRequeueRejected(false);
         return factory;
     }
-
-
 }
